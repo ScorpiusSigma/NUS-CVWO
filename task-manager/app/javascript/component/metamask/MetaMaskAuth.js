@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
+import "../../packs/index.css";
 
 const MetaMaskAuth = () => {
-  const { currentAccount, setCurrentAccount } = useContext(UserContext);
+  const { setCurrentAccount, setSignIn } = useContext(UserContext);
   const { ethereum } = window;
   const checkForConnection = async () => {
     try {
@@ -17,6 +18,7 @@ const MetaMaskAuth = () => {
       if (accounts.length > 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
+        setSignIn(true);
         setCurrentAccount(account);
       } else {
         console.log("No authorized account found");
@@ -40,6 +42,7 @@ const MetaMaskAuth = () => {
 
       const account = accounts[0];
       console.log("Connected:", account);
+      setSignIn(true);
       setCurrentAccount(account);
     } catch (error) {
       console.log(error);
@@ -50,7 +53,11 @@ const MetaMaskAuth = () => {
     checkForConnection();
   });
 
-  return <button onClick={connectWallet}>Connect Wallet</button>;
+  return (
+    <button className="metamask_buttons" onClick={connectWallet}>
+      Connect Wallet
+    </button>
+  );
 };
 
 export default MetaMaskAuth;

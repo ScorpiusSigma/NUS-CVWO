@@ -28,7 +28,7 @@ module Api
         task = Task.find(params[:id])
 
         if task.destroy
-          head: no_content
+          head :no_content
         else
           render json: { error: task.error.messages }, status: 422
         end

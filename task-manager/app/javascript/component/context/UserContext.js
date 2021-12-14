@@ -6,8 +6,12 @@ const UserProvider = (props) => {
     "0x0000000000000000000000000000000000000000"
   );
 
+  const [signIn, setSignIn] = useState(false);
+
   return (
-    <UserContext.Provider value={{ currentAccount, setCurrentAccount }}>
+    <UserContext.Provider
+      value={{ currentAccount, setCurrentAccount, signIn, setSignIn }}
+    >
       {props.children}
     </UserContext.Provider>
   );

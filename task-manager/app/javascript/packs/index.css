@@ -1,13 +1,16 @@
-.metamask_buttons {
-  display: inline-flex;
-  width: max-content;
+* {
+  font-family: Arial;
+  margin: 0px;
+}
+
+.auth_button {
+  display: flex;
+  height: max-content;
   flex-direction: row;
-  -webkit-box-align: center;
   align-items: center;
   border-radius: 10px;
-  -webkit-box-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   padding: 10px 10px;
   background-color: rgb(32, 129, 226);
@@ -15,16 +18,27 @@
   color: rgb(255, 255, 255);
   margin-left: 1px;
   margin-right: 1px;
-  /* transition-duration: 0.4s; */
 }
 
-.metamask_buttons:hover {
+.auth_button:hover {
   background-color: white; /* Green */
   color: rgb(32, 129, 226);
 }
 
 .account_name {
   width: 100px;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 10px;
+  background-color: white;
+  border: 1px solid rgb(32, 129, 226);
+  color: rgb(32, 129, 226);
+  margin-left: 1px;
+  margin-right: 1px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -32,28 +46,64 @@
 
 .navbar {
   display: flex;
-  padding: 5px;
-  justify-content: space-evenly;
+  padding: 20px;
+  height: 30px;
+  justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  margin: 5px;
 }
 
 .title {
-  display: inline-flex;
-  width: max-content;
-  flex-direction: row;
-  -webkit-box-align: center;
-  align-items: center;
-  border-radius: 10px;
-  -webkit-box-pack: center;
+  font-size: 24px;
+  color: rgb(32, 129, 226);
+}
+
+.content {
+  display: flex;
+  padding: 20px;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 10px 10px;
-  background-color: rgb(32, 129, 226);
-  border: 1px solid rgb(32, 129, 226);
-  color: rgb(255, 255, 255);
-  margin-left: 1px;
-  margin-right: 1px;
+  align-items: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: 73px 1fr 100px;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.footer {
+  padding: 20px;
+}
+
+.login_options {
+  display: flex;
+  flex-direction: column;
+  grid-template-rows: repeat(4, 1fr);
+  font-size: 24px;
+  border-style: solid;
+  border-color: rgb(32, 129, 226);
+  width: max-content;
+  padding: 100px;
+  border-radius: 30px;
+}
+
+.dash {
+  display: flex;
+  height: 0px;
+  width: 100%;
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+}
+
+.or_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-weight: normal;
+  color: gray;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }

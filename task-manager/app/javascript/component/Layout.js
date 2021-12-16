@@ -1,11 +1,14 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
+import "../packs/index.css";
 
 const Layout = (props) => {
   return (
-    <div>
+    <div className="layout">
       <Navbar />
-      {props.childeren}
+      <div className="content">{props.route}</div>
+      <Footer />
     </div>
   );
 };

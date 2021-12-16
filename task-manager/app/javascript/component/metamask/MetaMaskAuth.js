@@ -3,7 +3,16 @@ import { UserContext } from "../context/UserContext";
 import "../../packs/index.css";
 
 const MetaMaskAuth = () => {
-  const { setCurrentAccount, setSignIn } = useContext(UserContext);
+  const {
+    setCurrentAccount,
+    setSignIn,
+    signIn,
+    currentAccount,
+    invalidSignIn,
+    setInvalidSignIn,
+    name,
+  } = useContext(UserContext);
+
   const { ethereum } = window;
   const checkForConnection = async () => {
     try {
@@ -30,20 +39,25 @@ const MetaMaskAuth = () => {
 
   const connectWallet = async () => {
     try {
-      if (!ethereum) {
-        console.log("Get MetaMask!");
-        window.open("https://metamask.io/download", "_blank");
-        return;
+      if (name) {
+        setInvalidSignIn(false);
+        if (!ethereum) {
+          console.log("Get MetaMask!");
+          window.open("https://metamask.io/download", "_blank");
+          return;
+        }
+
+        const accounts = await ethereum.request({
+          method: "eth_requestAccounts",
+        });
+
+        const account = accounts[0];
+        console.log("Connected:", account);
+        setSignIn(true);
+        setCurrentAccount(account);
+      } else {
+        setInvalidSignIn(true);
       }
-
-      const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
-      });
-
-      const account = accounts[0];
-      console.log("Connected:", account);
-      setSignIn(true);
-      setCurrentAccount(account);
     } catch (error) {
       console.log(error);
     }
@@ -53,9 +67,16 @@ const MetaMaskAuth = () => {
     checkForConnection();
   });
 
-  return (
-    <button className="metamask_buttons" onClick={connectWallet}>
-      Connect Wallet
+  return signIn ? (
+    <div className="account_name">{currentAccount}</div>
+  ) : (
+    <button className="auth_button" onClick={connectWallet}>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <p>Connect Wallet</p>
+        <p style={{ fontWeight: "normal", fontSize: "12px" }}>
+          Highly Recommended!
+        </p>
+      </div>
     </button>
   );
 };

@@ -1,7 +1,13 @@
 import React from "react";
+import Login from "../component/Login";
+import "../packs/index.css";
 
 const Home = () => {
-  return <div>This is the Home page</div>;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 };
 
 export default Home;

@@ -1,7 +1,11 @@
 module Api
   module V1
     class TasksController < ApplicationController
+      protect_from_forgery with: :null_session
       def index
+        tasks = Task.where(account_id: params[:account_id])
+
+        render json: TaskSerializer.new(tasks).serialized_json
       end
 
       def create
@@ -36,8 +40,8 @@ module Api
 
       private
         def tasks_params
-          params.require(:task).permit(:title, :body)
+          params.require(:task).permit(:title, :body, :account_id)
         end
-    end    
+    end
   end
 end

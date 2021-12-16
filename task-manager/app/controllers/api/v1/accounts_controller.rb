@@ -1,16 +1,19 @@
 module Api
   module V1
     class AccountsController < ApplicationController
+      protect_from_forgery with: :null_session
+      # Get /Accounts
       def index
-        accounts = Account.all
+        accounts = Account.where(user: params[:user])
 
-        render json: AccountSerializer.new(accounts, options).serialized_json
+        render json: AccountSerializer.new(accounts).serialized_json
       end
-
+      
+      # Get /Accounts/1
       def show
-        account = Account.find_by(user: params[:user])
+        account = Account.find(params[:id])
 
-        render json: AccountSerializer.new(account, options).serialized_json
+        render json: AccountSerializer.new(account).serialized_json
       end
 
       def create
@@ -27,11 +30,6 @@ module Api
         def account_params
           params.require(:account).permit(:user, :name)
         end
-
-        def options
-          @options ||* {include: %i[tasks]}
-        end
-
     end    
   end
 end

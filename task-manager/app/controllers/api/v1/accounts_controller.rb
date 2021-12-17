@@ -18,7 +18,6 @@ module Api
 
       def create
         account = Account.new(account_params)
-
         if account.save
           render json: AccountSerializer.new(account).serialized_json
         else

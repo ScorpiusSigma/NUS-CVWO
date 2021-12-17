@@ -37,7 +37,8 @@ const Login = () => {
 
       <div
         style={{
-          margin: "5px",
+          marginTop: "2px",
+          marginBottom: "2px",
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
@@ -51,13 +52,13 @@ const Login = () => {
                   height: "30px",
                   border: "2px solid red",
                   borderRadius: "5px",
-                  width: "100%",
+                  display: "flex",
                 }
               : {
                   height: "30px",
                   border: "2px solid gray",
                   borderRadius: "5px",
-                  width: "100%",
+                  display: "flex",
                 }
           }
           onChange={(val) => {

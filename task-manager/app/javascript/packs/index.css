@@ -26,8 +26,8 @@
 }
 
 .account_name {
+  display: flex;
   width: 100px;
-  flex-direction: row;
   align-items: center;
   border-radius: 10px;
   justify-content: center;
@@ -51,6 +51,7 @@
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  background-color: whites;
 }
 
 .title {
@@ -63,11 +64,12 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
+  background-color: #f7fafc;
 }
 
 .layout {
   display: grid;
-  grid-template-rows: 73px 1fr 100px;
+  grid-template-rows: 73px 1fr 90px;
   min-height: 100vh;
   min-width: 100vw;
 }
@@ -86,6 +88,7 @@
   width: max-content;
   padding: 100px;
   border-radius: 30px;
+  background-color: white;
 }
 
 .dash {

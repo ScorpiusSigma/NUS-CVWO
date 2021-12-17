@@ -1,17 +1,35 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import "../../packs/index.css";
+import { get_account } from "./GetAccount";
+import axios from "axios";
 
 const MetaMaskAuth = () => {
   const {
     setCurrentAccount,
-    setSignIn,
-    signIn,
-    currentAccount,
-    invalidSignIn,
+    setSignedIn,
+    signedIn,
     setInvalidSignIn,
     name,
+    setName,
+    setId,
   } = useContext(UserContext);
+
+  const addAccount = async (account) => {
+    const res = await get_account(account);
+    if (res) {
+      setId(res.id);
+      setName(res.name);
+      setCurrentAccount(res.user);
+    } else {
+      axios
+        .post("/api/v1/accounts", {
+          account: { user: account, name: name },
+        })
+        .then((resp) => console.log(resp))
+        .catch((error) => console.log(error));
+    }
+  };
 
   const { ethereum } = window;
   const checkForConnection = async () => {
@@ -27,9 +45,10 @@ const MetaMaskAuth = () => {
       if (accounts.length > 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
-        setSignIn(true);
-        setCurrentAccount(account);
+        await addAccount(account);
+        setSignedIn(true);
       } else {
+        setName("");
         console.log("No authorized account found");
       }
     } catch (error) {
@@ -41,6 +60,7 @@ const MetaMaskAuth = () => {
     try {
       if (name) {
         setInvalidSignIn(false);
+
         if (!ethereum) {
           console.log("Get MetaMask!");
           window.open("https://metamask.io/download", "_blank");
@@ -53,8 +73,8 @@ const MetaMaskAuth = () => {
 
         const account = accounts[0];
         console.log("Connected:", account);
-        setSignIn(true);
-        setCurrentAccount(account);
+        await addAccount(account);
+        setSignedIn(true);
       } else {
         setInvalidSignIn(true);
       }
@@ -65,15 +85,15 @@ const MetaMaskAuth = () => {
 
   useEffect(() => {
     checkForConnection();
-  });
+  }, []);
 
-  return signIn ? (
-    <div className="account_name">{currentAccount}</div>
+  return signedIn ? (
+    <div className="account_name">{name}</div>
   ) : (
     <button className="auth_button" onClick={connectWallet}>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <p>Connect Wallet</p>
-        <p style={{ fontWeight: "normal", fontSize: "12px" }}>
+        <p style={{ fontWeight: "normal", fontSize: "12px", color: "yellow" }}>
           Highly Recommended!
         </p>
       </div>

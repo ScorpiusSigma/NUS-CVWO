@@ -4,7 +4,7 @@ import "../../packs/index.css";
 import { UserContext } from "../context/UserContext";
 
 const DeleteTask = (props) => {
-  const { accountId } = useContext(UserContext);
+  const { accountId, setAccountTasks, accountTasks } = useContext(UserContext);
 
   const deleteTask = async () => {
     const res = await axios.delete(
@@ -13,6 +13,12 @@ const DeleteTask = (props) => {
         "/tasks/" +
         props.id.toString()
     );
+    if (res) {
+      const result = accountTasks.filter(
+        (task) => task.id.toString() !== props.id.toString()
+      );
+      setAccountTasks(result);
+    }
     return res;
   };
   return (

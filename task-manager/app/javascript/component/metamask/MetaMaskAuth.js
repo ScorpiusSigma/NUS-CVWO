@@ -12,13 +12,13 @@ const MetaMaskAuth = () => {
     setInvalidSignIn,
     name,
     setName,
-    setId,
+    setAccountId,
   } = useContext(UserContext);
 
   const addAccount = async (account) => {
     const res = await get_account(account);
     if (res) {
-      setId(res.id);
+      setAccountId(res.id);
       setName(res.name);
       setCurrentAccount(res.user);
     } else {
@@ -36,10 +36,7 @@ const MetaMaskAuth = () => {
     try {
       if (!ethereum) {
         console.log("Please get MetaMask!");
-      } else {
-        console.log("We have an Ethereum object", ethereum);
       }
-
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
       if (accounts.length > 0) {
@@ -90,7 +87,7 @@ const MetaMaskAuth = () => {
   return signedIn ? (
     <div className="account_name">{name}</div>
   ) : (
-    <button className="auth_button" onClick={connectWallet}>
+    <button className="button" onClick={connectWallet}>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <p>Connect Wallet</p>
         <p style={{ fontWeight: "normal", fontSize: "12px", color: "yellow" }}>

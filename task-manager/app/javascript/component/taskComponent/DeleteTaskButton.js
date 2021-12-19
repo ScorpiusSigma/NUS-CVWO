@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import "../../packs/index.css";
 import { UserContext } from "../context/UserContext";
 
-const DeleteTask = (props) => {
+const DeleteTaskButton = (props) => {
   const { accountId, setAccountTasks, accountTasks } = useContext(UserContext);
 
   const deleteTask = async () => {
@@ -22,14 +22,10 @@ const DeleteTask = (props) => {
     return res;
   };
   return (
-    <button
-      className="button"
-      style={{ backgroundColor: "red" }}
-      onClick={deleteTask}
-    >
+    <button className="del-button" onClick={deleteTask}>
       Delete
     </button>
   );
 };
 
-export default DeleteTask;
+export default DeleteTaskButton;

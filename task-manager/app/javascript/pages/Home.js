@@ -7,7 +7,7 @@ import "../packs/index.css";
 const Home = () => {
   const { signedIn } = useContext(UserContext);
   return (
-    <div>
+    <div className="home">
       {console.log(signedIn)}
       {signedIn ? <TaskManager /> : <Login />}
     </div>

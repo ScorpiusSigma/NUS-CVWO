@@ -1,6 +1,6 @@
 import React from "react";
 import "../../packs/index.css";
-import DeleteTask from "./DeleteTask";
+import DeleteTaskButton from "./DeleteTaskButton";
 
 const taskCard = (props) => {
   const title = {
@@ -18,7 +18,7 @@ const taskCard = (props) => {
       <div>
         <div className="button">Edit</div>
         <br />
-        <DeleteTask id={props.id} />
+        <DeleteTaskButton id={props.id} />
       </div>
     </div>
   );

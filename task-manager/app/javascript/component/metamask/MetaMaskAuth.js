@@ -85,7 +85,7 @@ const MetaMaskAuth = () => {
   }, []);
 
   return signedIn ? (
-    <div className="account_name">{name}</div>
+    <div className="account-name">{name}</div>
   ) : (
     <button className="button" onClick={connectWallet}>
       <div style={{ display: "flex", flexDirection: "column" }}>

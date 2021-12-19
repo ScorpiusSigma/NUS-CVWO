@@ -12,7 +12,7 @@ module Api
         task = Task.new(tasks_params)
 
         if task.save
-          render json: TasksSerializer.new(task).serialized_json
+          render json: TaskSerializer.new(task).serialized_json
         else
           render json: { error: task.error.messages }, status: 422
         end
@@ -22,7 +22,7 @@ module Api
         task = Task.find(params[:id])
 
         if task.update(tasks_params)
-          render json: TasksSerializer.new(task).serialized_json
+          render json: TaskSerializer.new(task).serialized_json
         else
           render json: { error: task.error.messages }, status: 422
         end

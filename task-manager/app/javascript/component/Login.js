@@ -24,7 +24,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login_options">
+    <div className="login-options">
       <div
         style={{
           fontWeight: "bold",
@@ -71,7 +71,7 @@ const Login = () => {
 
       <MetaMaskAuth />
 
-      <div className="or_container">
+      <div className="or-container">
         <div className="dash" />
         <div
           style={{ marginLeft: "5px", marginRight: "5px", fontSize: "14px" }}

@@ -3,20 +3,22 @@ import { UserContext } from "../context/UserContext";
 import TaskCard from "./TaskCard";
 import AddTaskPanel from "./AddTaskPanel";
 import get_tasks from "./GetTasks";
+import UpdateTaskPanel from "./UpdateTaskPanel";
 
 const TaskManager = () => {
-  const { accountId, accountTasks, setAccountTasks } = useContext(UserContext);
+  const { accountId, accountTasks, setAccountTasks, updateTaskId } =
+    useContext(UserContext);
 
   const tasks = accountTasks;
 
   useEffect(() => {
     get_tasks(accountId, setAccountTasks);
-  }, [tasks.length]);
+  }, []);
 
   return (
     <div className="task-manager">
       <div className="task-manager-layout">
-        <AddTaskPanel />
+        {updateTaskId ? <UpdateTaskPanel /> : <AddTaskPanel />}
         <div className="task-panel">
           {tasks.length !== 0
             ? tasks.map((task) => (

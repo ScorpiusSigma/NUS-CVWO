@@ -40,11 +40,35 @@
   color: rgb(255, 255, 255);
   margin-left: 1px;
   margin-right: 1px;
+  width: 100%;
 }
 
 .del-button:hover {
   background-color: white; /* Green */
   color: red;
+}
+
+.update-button {
+  display: flex;
+  height: max-content;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 10px;
+  background-color: darkorange;
+  border: 1px solid darkorange;
+  color: rgb(255, 255, 255);
+  margin-left: 1px;
+  margin-right: 1px;
+  width: 100%;
+}
+
+.update-button:hover {
+  background-color: white; /* Green */
+  color: darkorange;
 }
 
 .account-name {
@@ -155,7 +179,7 @@
   margin-bottom: 2px;
 }
 
-.taskcard {
+.task-card {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -201,4 +225,10 @@ textarea {
 
 .sticky {
   position: sticky;
+}
+
+.update-panel-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }

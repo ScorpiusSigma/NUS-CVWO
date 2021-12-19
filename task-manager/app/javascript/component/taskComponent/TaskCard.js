@@ -1,13 +1,14 @@
 import React from "react";
 import "../../packs/index.css";
 import DeleteTaskButton from "./DeleteTaskButton";
+import EditTaskButton from "./EditTaskButton";
 
 const taskCard = (props) => {
   const title = {
     fontWeight: "bold",
   };
   return (
-    <div key={props.id} className="taskcard">
+    <div key={props.id} className="task-card">
       <div>
         <div style={title}>Title:</div>
         <div>{props.title}</div>
@@ -16,7 +17,7 @@ const taskCard = (props) => {
         <div>{props.body}</div>
       </div>
       <div>
-        <div className="button">Edit</div>
+        <EditTaskButton id={props.id} />
         <br />
         <DeleteTaskButton id={props.id} />
       </div>

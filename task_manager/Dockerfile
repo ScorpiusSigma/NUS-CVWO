@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ruby:latest
+FROM ruby:3.0.3
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 WORKDIR /task_manager
 COPY . .

@@ -9,6 +9,8 @@ const UserProvider = (props) => {
   const [accountId, setAccountId] = useState("");
   const [accountTasks, setAccountTasks] = useState([]);
   const [updateTaskId, setUpdateTaskId] = useState("");
+  const [searchVal, setSearchVal] = useState("");
+  const [searchCat, setSearchCat] = useState("title");
 
   return (
     <UserContext.Provider
@@ -27,6 +29,10 @@ const UserProvider = (props) => {
         setAccountTasks,
         updateTaskId,
         setUpdateTaskId,
+        searchVal,
+        setSearchVal,
+        searchCat,
+        setSearchCat,
       }}
     >
       {props.children}

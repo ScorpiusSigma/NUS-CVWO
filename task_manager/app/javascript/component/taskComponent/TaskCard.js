@@ -13,6 +13,9 @@ const taskCard = (props) => {
         <div style={title}>Title:</div>
         <div>{props.title}</div>
         <br />
+        <div style={title}>Category:</div>
+        <div>{props.category}</div>
+        <br />
         <div style={title}>Body:</div>
         <div>{props.body}</div>
       </div>

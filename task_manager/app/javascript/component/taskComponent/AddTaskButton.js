@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "../../packs/index.css";
-import { UserContext } from "../context/UserContext";
 
 const AddTaskButton = (props) => {
   return (

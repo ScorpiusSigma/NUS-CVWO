@@ -8,7 +8,9 @@ import get_tasks from "./GetTasks";
 const AddTaskPanel = () => {
   const { accountId, setAccountTasks } = useContext(UserContext);
 
-  const default_obj = { task: { title: "", body: "", account_id: accountId } };
+  const default_obj = {
+    task: { title: "", category: "", body: "", account_id: accountId },
+  };
   const [obj, setObj] = useState(default_obj);
 
   const addTask = async () => {
@@ -69,9 +71,9 @@ const AddTaskPanel = () => {
           display: "flex",
         }}
         required
-        value={obj.task.title}
+        value={obj.task.category}
         onChange={(event) =>
-          setObj({ task: { ...obj.task, title: event.target.value } })
+          setObj({ task: { ...obj.task, category: event.target.value } })
         }
       />
       <br />

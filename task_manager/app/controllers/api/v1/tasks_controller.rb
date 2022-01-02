@@ -40,7 +40,7 @@ module Api
 
       private
         def tasks_params
-          params.require(:task).permit(:title, :body, :account_id)
+          params.require(:task).permit(:title, :category, :body, :account_id)
         end
     end
   end

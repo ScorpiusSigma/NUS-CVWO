@@ -12,11 +12,28 @@ const PublicAuth = () => {
     accountId,
   } = useContext(UserContext);
 
+  const addAccount = async (account) => {
+    const res = await get_account(account);
+    if (res) {
+      setAccountId(res.id);
+      setName(res.name);
+      setCurrentAccount(res.user);
+    } else {
+      axios
+        .post("/api/v1/accounts", {
+          account: { user: account, name: name },
+        })
+        .then((resp) => console.log(resp))
+        .catch((error) => console.log(error));
+    }
+  };
+
   const connectPulic = async () => {
     const publicAddress = "0x0000000000000000000000000000000000000000";
     const publicName = "Public";
     setName(publicName);
     setCurrentAccount(publicAddress);
+    addAccount(publicAddress);
 
     const res = await get_account(publicAddress);
     setAccountId(res.id);

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_01_02_102114) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: :cascade do |t|
     t.string "user"
     t.string "name"
@@ -21,11 +24,11 @@ ActiveRecord::Schema.define(version: 2022_01_02_102114) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.string "category"
     t.text "body"
-    t.integer "account_id", null: false
+    t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
     t.index ["account_id"], name: "index_tasks_on_account_id"
   end
 

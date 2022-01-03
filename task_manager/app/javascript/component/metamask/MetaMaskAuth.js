@@ -55,7 +55,7 @@ const MetaMaskAuth = () => {
 
   const connectWallet = async () => {
     try {
-      if (name) {
+      if (name && name !== "Public") {
         setInvalidSignIn(false);
 
         if (!ethereum) {

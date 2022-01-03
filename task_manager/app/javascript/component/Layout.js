@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "../packs/index.css";
+import "../../assets/stylesheets/application.css";
 
 const Layout = (props) => {
   return (

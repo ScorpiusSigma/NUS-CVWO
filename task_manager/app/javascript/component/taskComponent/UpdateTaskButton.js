@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../../packs/index.css";
+import "../../../assets/stylesheets/application.css";
 import { UserContext } from "../context/UserContext";
 
 const UpdateTaskButton = (props) => {

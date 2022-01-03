@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
-import "../../packs/index.css";
+import "../../../assets/stylesheets/application.css";
 import { get_account } from "./GetAccount";
 import axios from "axios";
 

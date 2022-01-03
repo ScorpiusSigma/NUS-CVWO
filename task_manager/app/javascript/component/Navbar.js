@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import MetaMaskAuth from "./metamask/MetaMaskAuth";
-import "../packs/index.css";
+import "../../assets/stylesheets/application.css";
 import { UserContext } from "./context/UserContext";
 
 const Navbar = (props) => {

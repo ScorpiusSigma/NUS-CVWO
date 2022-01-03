@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
-import "../../packs/index.css";
+import "../../../assets/stylesheets/application.css";
 import { UserContext } from "../context/UserContext";
 import AddTaskButton from "./AddTaskButton";
 import get_tasks from "./GetTasks";

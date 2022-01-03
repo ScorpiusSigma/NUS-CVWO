@@ -1,5 +1,5 @@
 import React from "react";
-import "../../packs/index.css";
+import "../../../assets/stylesheets/application.css";
 import DeleteTaskButton from "./DeleteTaskButton";
 import EditTaskButton from "./EditTaskButton";
 

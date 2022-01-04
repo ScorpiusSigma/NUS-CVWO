@@ -8,7 +8,9 @@ import get_tasks from "./GetTasks";
 const UpdateTaskPanel = () => {
   const { accountId, setAccountTasks, updateTaskId, setUpdateTaskId } =
     useContext(UserContext);
-  const default_obj = { task: { title: "", body: "", account_id: accountId } };
+  const default_obj = {
+    task: { title: "", category: "", body: "", account_id: accountId },
+  };
   const [obj, setObj] = useState(default_obj);
 
   const updateTask = async () => {
@@ -37,6 +39,7 @@ const UpdateTaskPanel = () => {
     const update_obj = {
       task: {
         title: task.attributes.title,
+        category: task.attributes.category,
         body: task.attributes.body,
         account_id: accountId,
       },
@@ -46,23 +49,9 @@ const UpdateTaskPanel = () => {
 
   return (
     <div className="add-task-panel">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        Title:
-      </div>
+      <div>Title:</div>
       <input
-        style={{
-          height: "30px",
-          border: "2px solid gray",
-          borderRadius: "5px",
-          display: "flex",
-        }}
+        className="panel-inputs"
         required
         value={obj.task.title}
         onChange={(event) =>
@@ -70,39 +59,18 @@ const UpdateTaskPanel = () => {
         }
       />
       <br />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        Category:
-      </div>
+      <div>Category:</div>
       <input
-        style={{
-          height: "30px",
-          border: "2px solid gray",
-          borderRadius: "5px",
-          display: "flex",
-        }}
-        required
-        value="Category"
+        className="panel-inputs"
+        value={obj.task.category}
         onChange={(event) =>
-          setObj({ task: { ...obj.task, title: event.target.value } })
+          setObj({ task: { ...obj.task, category: event.target.value } })
         }
       />
       <br />
       <div>Description:</div>
       <textarea
-        style={{
-          height: "30px",
-          border: "2px solid gray",
-          borderRadius: "5px",
-          display: "flex",
-        }}
-        required
+        className="panel-inputs"
         value={obj.task.body}
         onChange={(event) =>
           setObj({ task: { ...obj.task, body: event.target.value } })

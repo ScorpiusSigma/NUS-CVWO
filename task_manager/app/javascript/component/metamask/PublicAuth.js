@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { get_account } from "./GetAccount";
@@ -12,14 +13,14 @@ const PublicAuth = () => {
     accountId,
   } = useContext(UserContext);
 
-  const addAccount = async (account) => {
+  const addAccount = async (account, name) => {
     const res = await get_account(account);
     if (res) {
       setAccountId(res.id);
       setName(res.name);
       setCurrentAccount(res.user);
     } else {
-      axios
+      await axios
         .post("/api/v1/accounts", {
           account: { user: account, name: name },
         })
@@ -29,16 +30,18 @@ const PublicAuth = () => {
   };
 
   const connectPulic = async () => {
-    const publicAddress = "0x0000000000000000000000000000000000000000";
+    const publicAccount = "0x0000000000000000000000000000000000000000";
     const publicName = "Public";
     setName(publicName);
-    setCurrentAccount(publicAddress);
-    addAccount(publicAddress);
+    setCurrentAccount(publicAccount);
+    addAccount(publicAccount, publicName);
 
-    const res = await get_account(publicAddress);
-    setAccountId(res.id);
-    console.log("Connected:", publicAddress);
-    setSignedIn(true);
+    const res = await get_account(publicAccount);
+    if (res) {
+      setAccountId(res.id);
+      console.log("Connected:", publicAccount);
+      setSignedIn(true);
+    }
   };
 
   return (

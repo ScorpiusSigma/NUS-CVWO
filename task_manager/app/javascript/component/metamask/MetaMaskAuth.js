@@ -15,22 +15,6 @@ const MetaMaskAuth = () => {
     setAccountId,
   } = useContext(UserContext);
 
-  const addAccount = async (account) => {
-    const res = await get_account(account);
-    if (res) {
-      setAccountId(res.id);
-      setName(res.name);
-      setCurrentAccount(res.user);
-    } else {
-      axios
-        .post("/api/v1/accounts", {
-          account: { user: account, name: name },
-        })
-        .then((resp) => console.log(resp))
-        .catch((error) => console.log(error));
-    }
-  };
-
   const { ethereum } = window;
   const checkForConnection = async () => {
     try {
@@ -39,7 +23,7 @@ const MetaMaskAuth = () => {
       }
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
-      if (accounts.length > 0) {
+      if (accounts && accounts.length > 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         await addAccount(account);
@@ -50,6 +34,23 @@ const MetaMaskAuth = () => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const addAccount = async (account) => {
+    const res = await get_account(account);
+    if (res) {
+      setAccountId(res.id);
+      setName(res.name);
+      setCurrentAccount(res.user);
+    } else {
+      await axios
+        .post("/api/v1/accounts", {
+          account: { user: account, name: name },
+        })
+        .then((resp) => console.log(resp))
+        .catch((error) => console.log(error));
+      await addAccount(account);
     }
   };
 

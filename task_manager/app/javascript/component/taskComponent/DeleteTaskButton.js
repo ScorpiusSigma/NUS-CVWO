@@ -4,7 +4,8 @@ import "../../../assets/stylesheets/application.css";
 import { UserContext } from "../context/UserContext";
 
 const DeleteTaskButton = (props) => {
-  const { accountId, setAccountTasks, accountTasks } = useContext(UserContext);
+  const { accountId, setAccountTasks, accountTasks, setUpdateTaskId } =
+    useContext(UserContext);
 
   const deleteTask = async () => {
     const res = await axios.delete(
@@ -18,9 +19,11 @@ const DeleteTaskButton = (props) => {
         (task) => task.id.toString() !== props.id.toString()
       );
       setAccountTasks(result);
+      setUpdateTaskId("");
     }
     return res;
   };
+
   return (
     <button className="del-button" onClick={deleteTask}>
       Delete

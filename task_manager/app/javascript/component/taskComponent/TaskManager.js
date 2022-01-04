@@ -5,6 +5,7 @@ import AddTaskPanel from "./AddTaskPanel";
 import get_tasks from "./GetTasks";
 import UpdateTaskPanel from "./UpdateTaskPanel";
 import SearchBar from "./SearchContent";
+import { get_account } from "../metamask/GetAccount";
 
 const TaskManager = () => {
   const {
@@ -14,6 +15,7 @@ const TaskManager = () => {
     updateTaskId,
     searchVal,
     searchCat,
+    currentAccount,
   } = useContext(UserContext);
 
   const tasks = accountTasks;
@@ -23,7 +25,7 @@ const TaskManager = () => {
   }, []);
 
   const showContent = () => {
-    if (tasks.length !== 0) {
+    if (tasks && tasks.length !== 0) {
       let showTask = tasks;
       if (searchVal) {
         showTask = showTask.filter((task) => {

@@ -2,24 +2,14 @@ import React, { useContext } from "react";
 import { UserContext } from "./context/UserContext";
 import MetaMaskAuth from "./metamask/MetaMaskAuth";
 import PublicAuth from "./metamask/PublicAuth";
+import "../../assets/stylesheets/application.css";
 
 const Login = () => {
   const { setName, invalidSignIn, setInvalidSignIn } = useContext(UserContext);
 
   const bool_nameInputted = () => {
     if (invalidSignIn) {
-      return (
-        <p
-          style={{
-            fontSize: "13px",
-            color: "red",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          Please input your name!
-        </p>
-      );
+      return <p className="alert-input">Please input your name!</p>;
     }
   };
 

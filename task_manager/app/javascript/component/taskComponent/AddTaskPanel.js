@@ -11,8 +11,8 @@ const AddTaskPanel = () => {
   const default_obj = {
     task: { title: "", category: "", body: "", account_id: accountId },
   };
-  const [obj, setObj] = useState(default_obj);
 
+  const [obj, setObj] = useState(default_obj);
   const addTask = async () => {
     const res = await axios.post(
       "/api/v1/accounts/" + accountId.toString() + "/tasks",

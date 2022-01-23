@@ -26,10 +26,10 @@
 }
 
 .alert-input {
-  display: "flex";
-  justify-content: "center";
-  font-size: "13px";
-  color: "red";
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  color: red;
 }
 
 .del-button {
@@ -121,10 +121,10 @@
 }
 
 .panel-inputs {
-  display: "flex";
-  height: "30px";
-  border: "2px solid gray";
-  border-radius: "5px";
+  display: flex;
+  height: 30px;
+  border: 2px solid gray;
+  border-radius: 5px;
 }
 
 .content {
